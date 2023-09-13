@@ -81,7 +81,7 @@ foo + np.full(shape=(2,2), fill_value=5)
 If you do foo + 5, numpy adds 5 to each element of foo.
 
 ```python
-foo + bar
+foo + 5
 # array([[9, 8],
 #        [6, 5]])
 ```
