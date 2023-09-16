@@ -101,45 +101,98 @@
    print(a.sum())
    ```
 33. What are the benefits of using Numpy arrays over Python lists for operating on numerical data?
-34. Why do Numpy array operations have better performance compared to Python functions and loops?
-35. Illustrate the performance difference between Numpy array operations and Python loops using an example.
-36. What are multi-dimensional Numpy arrays?
-37. Illustrate the creation of Numpy arrays with 2, 3, and 4 dimensions.
-38. How do you inspect the number of dimensions and the length along each dimension in a Numpy array?
-39. Can the elements of a Numpy array have different data types?
-40. How do you check the data type of the elements of a Numpy array?
-41. What is the data type of a Numpy array?
-42. What is the difference between a matrix and a 2D Numpy array?
-43. How do you perform matrix multiplication using Numpy?
-44. What is the `@` operator used for in Numpy?
-45. What is the CSV file format?
-46. How do you read data from a CSV file using Numpy?
-47. How do you concatenate two Numpy arrays?
-48. What is the purpose of the `axis` argument of `np.concatenate`?
-49. When are two Numpy arrays compatible for concatenation?
-50. Give an example of two Numpy arrays that can be concatenated.
-51. Give an example of two Numpy arrays that cannot be concatenated.
-52. What is the purpose of the `np.reshape` function?
-53. What does it mean to “reshape” a Numpy array?
-54. How do you write a numpy array into a CSV file?
-55. Give some examples of Numpy functions for performing mathematical operations.
-56. Give some examples of Numpy functions for performing array manipulation.
-57. Give some examples of Numpy functions for performing linear algebra.
-58. Give some examples of Numpy functions for performing statistical operations.
-59. How do you find the right Numpy function for a specific operation or use case?
-60. Where can you see a list of all the Numpy array functions and operations?
-61. What are the arithmetic operators supported by Numpy arrays? Illustrate with examples.
-62. What is array broadcasting? How is it useful? Illustrate with an example.
-63. Give some examples of arrays that are compatible for broadcasting?
-64. Give some examples of arrays that are not compatible for broadcasting?
-65. What are the comparison operators supported by Numpy arrays? Illustrate with examples.
-66. How do you access a specific subarray or slice from a Numpy array?
-67. Illustrate array indexing and slicing in multi-dimensional Numpy arrays with some examples.
-68. How do you create a Numpy array with a given shape containing all zeros?
-69. How do you create a Numpy array with a given shape containing all ones?
-70. How do you create an identity matrix of a given shape?
-71. How do you create a random vector of a given length?
-72. How do you create a Numpy array with a given shape with a fixed value for each element?
-73. How do you create a Numpy array with a given shape containing randomly initialized elements?
-74. What is the difference between `np.random.rand` and `np.random.randn`? Illustrate with examples.
-75. What is the difference between `np.arange` and `np.linspace`? Illustrate with examples.
+    - They're **easy to use**: You can write small, concise, and intuitive mathematical expressions like (kanto * weights).sum() rather than using loops
+    - **Performance**: Numpy operations and functions are implemented internally in C++, which makes them much faster than using Python statements and loops that are interpreted at runtime
+35. Why do Numpy array operations have better performance compared to Python functions and loops?
+
+    Because Numpy operations and functions are implemented internally in C++
+37. Illustrate the performance difference between Numpy array operations and Python loops using an example.
+   ```python
+   import math
+   import timeit
+
+   start_time = timeit.default_timer()
+   for i in range(1, 1000000):
+       math.sqrt(i)
+   end_time = timeit.default_timer()
+
+   print(f"Execution time: {end_time - start_time} seconds")
+   ```
+   ```python
+   import numpy as np
+   import timeit
+
+   start_time = timeit.default_timer()
+   np.sqrt(np.arange(1, 1000000))
+   end_time = timeit.default_timer()
+
+   print(f"Execution time: {end_time - start_time} seconds")
+   ```
+   ```python
+   # Python lists
+   arr1 = list(range(1000000))
+   arr2 = list(range(1000000, 2000000))
+
+   # Numpy arrays
+   arr1_np = np.array(arr1)
+   arr2_np = np.array(arr2)
+
+   %%time
+   result = 0
+   for x1, x2 in zip(arr1, arr2):
+       result += x1*x2
+   result
+
+   # CPU times: user 300 ms, sys: 3.26 ms, total: 303 ms
+   # Wall time: 302 ms
+   # 833332333333500000
+
+   %%time
+   np.dot(arr1_np, arr2_np)
+
+   # CPU times: user 2.11 ms, sys: 951 µs, total: 3.07 ms
+   # Wall time: 1.58 ms
+   # 833332333333500000
+   ```
+39. What are multi-dimensional Numpy arrays?
+    
+    Numpy arrays can have any number of dimensions and different lengths along each dimension. We can inspect the length along each dimension using the .shape property of an array.
+41. Illustrate the creation of Numpy arrays with 2, 3, and 4 dimensions.
+42. How do you inspect the number of dimensions and the length along each dimension in a Numpy array?
+43. Can the elements of a Numpy array have different data types?
+44. How do you check the data type of the elements of a Numpy array?
+45. What is the data type of a Numpy array?
+46. What is the difference between a matrix and a 2D Numpy array?
+47. How do you perform matrix multiplication using Numpy?
+48. What is the `@` operator used for in Numpy?
+49. What is the CSV file format?
+50. How do you read data from a CSV file using Numpy?
+51. How do you concatenate two Numpy arrays?
+52. What is the purpose of the `axis` argument of `np.concatenate`?
+53. When are two Numpy arrays compatible for concatenation?
+54. Give an example of two Numpy arrays that can be concatenated.
+55. Give an example of two Numpy arrays that cannot be concatenated.
+56. What is the purpose of the `np.reshape` function?
+57. What does it mean to “reshape” a Numpy array?
+58. How do you write a numpy array into a CSV file?
+59. Give some examples of Numpy functions for performing mathematical operations.
+60. Give some examples of Numpy functions for performing array manipulation.
+61. Give some examples of Numpy functions for performing linear algebra.
+62. Give some examples of Numpy functions for performing statistical operations.
+63. How do you find the right Numpy function for a specific operation or use case?
+64. Where can you see a list of all the Numpy array functions and operations?
+65. What are the arithmetic operators supported by Numpy arrays? Illustrate with examples.
+66. What is array broadcasting? How is it useful? Illustrate with an example.
+67. Give some examples of arrays that are compatible for broadcasting?
+68. Give some examples of arrays that are not compatible for broadcasting?
+69. What are the comparison operators supported by Numpy arrays? Illustrate with examples.
+70. How do you access a specific subarray or slice from a Numpy array?
+71. Illustrate array indexing and slicing in multi-dimensional Numpy arrays with some examples.
+72. How do you create a Numpy array with a given shape containing all zeros?
+73. How do you create a Numpy array with a given shape containing all ones?
+74. How do you create an identity matrix of a given shape?
+75. How do you create a random vector of a given length?
+76. How do you create a Numpy array with a given shape with a fixed value for each element?
+77. How do you create a Numpy array with a given shape containing randomly initialized elements?
+78. What is the difference between `np.random.rand` and `np.random.randn`? Illustrate with examples.
+79. What is the difference between `np.arange` and `np.linspace`? Illustrate with examples.
