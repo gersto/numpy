@@ -269,24 +269,88 @@
 42. Give some examples of Numpy functions for performing statistical operations.
 
     Statistics: np.mean, np.median, np.std, np.max
-84. How do you find the right Numpy function for a specific operation or use case?
+43. How do you find the right Numpy function for a specific operation or use case?
 
     The easiest way to find the right function for a specific operation or use-case is to do a web search. For instance, searching for "How to join numpy arrays" leads to [this tutorial on array concatenation](https://cmdlinetips.com/2018/04/how-to-concatenate-arrays-in-numpy/).
 
+44. Where can you see a list of all the Numpy array functions and operations?
+
     You can find a full list of array functions [here](https://numpy.org/doc/stable/reference/routines.html)
-86. Where can you see a list of all the Numpy array functions and operations?
-87. What are the arithmetic operators supported by Numpy arrays? Illustrate with examples.
-88. What is array broadcasting? How is it useful? Illustrate with an example.
-89. Give some examples of arrays that are compatible for broadcasting?
-90. Give some examples of arrays that are not compatible for broadcasting?
-91. What are the comparison operators supported by Numpy arrays? Illustrate with examples.
-92. How do you access a specific subarray or slice from a Numpy array?
-93. Illustrate array indexing and slicing in multi-dimensional Numpy arrays with some examples.
-94. How do you create a Numpy array with a given shape containing all zeros?
-95. How do you create a Numpy array with a given shape containing all ones?
-96. How do you create an identity matrix of a given shape?
-97. How do you create a random vector of a given length?
-98. How do you create a Numpy array with a given shape with a fixed value for each element?
-99. How do you create a Numpy array with a given shape containing randomly initialized elements?
-100. What is the difference between `np.random.rand` and `np.random.randn`? Illustrate with examples.
-101. What is the difference between `np.arange` and `np.linspace`? Illustrate with examples.
+45. What are the arithmetic operators supported by Numpy arrays? Illustrate with examples.
+    ```python
+    arr2 = np.array([[1, 2, 3, 4], 
+                 [5, 6, 7, 8], 
+                 [9, 1, 2, 3]])
+                 
+    arr3 = np.array([[11, 12, 13, 14], 
+                 [15, 16, 17, 18], 
+                 [19, 11, 12, 13]])
+                 
+    # Adding a scalar
+    arr2 + 3
+
+    # array([[ 4,  5,  6,  7],
+    #        [ 8,  9, 10, 11],
+    #        [12,  4,  5,  6]])
+
+    # Element-wise subtraction
+    arr3 - arr2
+
+    # array([[10, 10, 10, 10],
+    #        [10, 10, 10, 10],
+    #        [10, 10, 10, 10]])
+
+    # Division by scalar
+    arr2 / 2
+
+    # array([[0.5, 1. , 1.5, 2. ],
+    #        [2.5, 3. , 3.5, 4. ],
+    #        [4.5, 0.5, 1. , 1.5]])
+
+    # Element-wise multiplication
+    arr2 * arr3
+
+    # array([[ 11,  24,  39,  56],
+    #        [ 75,  96, 119, 144],
+    #        [171,  11,  24,  39]])
+
+    # Modulus with scalar
+    arr2 % 4
+
+    # array([[1, 2, 3, 0],
+    #        [1, 2, 3, 0],
+    #        [1, 1, 2, 3]])
+    ```
+46. What is array broadcasting? How is it useful? Illustrate with an example.
+
+    Numpy arrays also support broadcasting, allowing arithmetic operations between two arrays with different numbers of dimensions but compatible shapes
+47. Give some examples of arrays that are compatible for broadcasting?
+    ```python
+    arr2 = np.array([[1, 2, 3, 4], 
+                 [5, 6, 7, 8], 
+                 [9, 1, 2, 3]])               
+    arr2.shape
+    # (3, 4)
+
+    arr4 = np.array([4, 5, 6, 7])
+    arr4.shape
+    # (4,)
+
+    arr2 + arr4
+    # array([[ 5,  7,  9, 11],
+    #        [ 9, 11, 13, 15],
+    #        [13,  6,  8, 10]])
+    ```
+    
+94. Give some examples of arrays that are not compatible for broadcasting?
+95. What are the comparison operators supported by Numpy arrays? Illustrate with examples.
+96. How do you access a specific subarray or slice from a Numpy array?
+97. Illustrate array indexing and slicing in multi-dimensional Numpy arrays with some examples.
+98. How do you create a Numpy array with a given shape containing all zeros?
+99. How do you create a Numpy array with a given shape containing all ones?
+100. How do you create an identity matrix of a given shape?
+101. How do you create a random vector of a given length?
+102. How do you create a Numpy array with a given shape with a fixed value for each element?
+103. How do you create a Numpy array with a given shape containing randomly initialized elements?
+104. What is the difference between `np.random.rand` and `np.random.randn`? Illustrate with examples.
+105. What is the difference between `np.arange` and `np.linspace`? Illustrate with examples.
