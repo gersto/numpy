@@ -2,13 +2,13 @@
    ```python
    np.array(['a', 'b', 'c'])
    ```
-3. How do you represent vectors using a Python list? Give an example.
+2. How do you represent vectors using a Python list? Give an example.
    ```python
    # 3 dimensional vectors
    v2 = [x1,x2,x3]
    v3 = [2,3,4]
    ```
-5. What is a dot product of two vectors?
+3. What is a dot product of two vectors?
    ```python
    x = (x1,x2,x3)
    y = (y1,y2,y3)
@@ -17,7 +17,7 @@
    y = (4,5,6)
    z = 1*2 + 2*5 + 3*6 = 30
    ```
-7. Write a function to compute the dot product of two vectors.
+4. Write a function to compute the dot product of two vectors.
    ```python
    x1 = [1,2,3]
    x2 = [4,5,6]
@@ -32,11 +32,11 @@
     
    print(dot1(x1,x2))
    ```
-9. What is Numpy?
+5. What is Numpy?
    
    The **Numpy library** provides **specialized data structures**, **functions**, and other tools for **numerical computing** in Python
    
-11. How do you import the `numpy` module?
+6. How do you import the `numpy` module?
    ```python
    import numpy as np
    a=np.array([1,2,3])
@@ -45,26 +45,26 @@
    import numpy
    b=numpy.array([4,5,6])
    ```
-13. What does it mean to import a module with an alias? Give an example.
+7. What does it mean to import a module with an alias? Give an example.
    ```python
    import numpy as np
    a=np.array([1,2,3])
    ```
-15. What is the commonly used alias for `numpy`?
+8. What is the commonly used alias for `numpy`?
     
     **np**
-17. What is a Numpy array?
+9. What is a Numpy array?
     
     Numpy arrays are a spezial list of equal value-types from type **ndarray**
-19. How do you create a Numpy array? Give an example.
+10. How do you create a Numpy array? Give an example.
    ```python
    import numpy as np
    a=np.array([1,2,3])
    ```
-21. What is the type of Numpy arrays?
+11. What is the type of Numpy arrays?
 
     **ndarray**
-23. How do you access the elements of a Numpy array?
+12. How do you access the elements of a Numpy array?
    ```python
    # Numpy-Arrays support indexing
    import numpy as np
@@ -72,7 +72,7 @@
    # to print the third element
    print(a[2])
    ```
-25. How do you compute the dot product of two vectors using Numpy?
+13. How do you compute the dot product of two vectors using Numpy?
    ```python
    # using the dot-Function
    import numpy as np
