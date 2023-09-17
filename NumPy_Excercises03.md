@@ -231,28 +231,62 @@
     # [ 5  7  9  6  8 10]]
     ```  
 35. Give an example of two Numpy arrays that cannot be concatenated.
-    
-71. What is the purpose of the `np.reshape` function?
-72. What does it mean to “reshape” a Numpy array?
-73. How do you write a numpy array into a CSV file?
-74. Give some examples of Numpy functions for performing mathematical operations.
-75. Give some examples of Numpy functions for performing array manipulation.
-76. Give some examples of Numpy functions for performing linear algebra.
-77. Give some examples of Numpy functions for performing statistical operations.
-78. How do you find the right Numpy function for a specific operation or use case?
-79. Where can you see a list of all the Numpy array functions and operations?
-80. What are the arithmetic operators supported by Numpy arrays? Illustrate with examples.
-81. What is array broadcasting? How is it useful? Illustrate with an example.
-82. Give some examples of arrays that are compatible for broadcasting?
-83. Give some examples of arrays that are not compatible for broadcasting?
-84. What are the comparison operators supported by Numpy arrays? Illustrate with examples.
-85. How do you access a specific subarray or slice from a Numpy array?
-86. Illustrate array indexing and slicing in multi-dimensional Numpy arrays with some examples.
-87. How do you create a Numpy array with a given shape containing all zeros?
-88. How do you create a Numpy array with a given shape containing all ones?
-89. How do you create an identity matrix of a given shape?
-90. How do you create a random vector of a given length?
-91. How do you create a Numpy array with a given shape with a fixed value for each element?
-92. How do you create a Numpy array with a given shape containing randomly initialized elements?
-93. What is the difference between `np.random.rand` and `np.random.randn`? Illustrate with examples.
-94. What is the difference between `np.arange` and `np.linspace`? Illustrate with examples.
+    ```python
+    a = np.array([[0,1,3],[5,7,9]])
+    b = np.array([[0,2],[6,8]])
+    print(np.concatenate((a,b)))
+    # ValueError
+    print(np.concatenate((a,b), axis=1))
+    #[[ 0  1  3  0  2]
+    # [ 5  7  9  6  8]]
+    ```      
+36. What is the purpose of the `np.reshape` function?
+
+    We use the **np.reshape** function to change the shape of an array
+37. What does it mean to “reshape” a Numpy array?
+
+    It means me change the shape of an array
+38. How do you write a numpy array into a CSV file?
+
+    With the **np.savetxt** function
+    ```python
+    np.savetxt('climate_results.txt', 
+           climate_results, 
+           fmt='%.2f', 
+           delimiter=',',
+           header='temperature,rainfall,humidity,yeild_apples', 
+           comments='')
+    ```
+39. Give some examples of Numpy functions for performing mathematical operations.
+
+    Mathematics: np.sum, np.exp, np.round, arithmetic operators
+40. Give some examples of Numpy functions for performing array manipulation.
+
+    Array manipulation: np.reshape, np.stack, np.concatenate, np.split
+41. Give some examples of Numpy functions for performing linear algebra.
+
+    Linear Algebra: np.matmul, np.dot, np.transpose, np.eigvals
+42. Give some examples of Numpy functions for performing statistical operations.
+
+    Statistics: np.mean, np.median, np.std, np.max
+84. How do you find the right Numpy function for a specific operation or use case?
+
+    The easiest way to find the right function for a specific operation or use-case is to do a web search. For instance, searching for "How to join numpy arrays" leads to [this tutorial on array concatenation](https://cmdlinetips.com/2018/04/how-to-concatenate-arrays-in-numpy/).
+
+    You can find a full list of array functions [here](https://numpy.org/doc/stable/reference/routines.html)
+86. Where can you see a list of all the Numpy array functions and operations?
+87. What are the arithmetic operators supported by Numpy arrays? Illustrate with examples.
+88. What is array broadcasting? How is it useful? Illustrate with an example.
+89. Give some examples of arrays that are compatible for broadcasting?
+90. Give some examples of arrays that are not compatible for broadcasting?
+91. What are the comparison operators supported by Numpy arrays? Illustrate with examples.
+92. How do you access a specific subarray or slice from a Numpy array?
+93. Illustrate array indexing and slicing in multi-dimensional Numpy arrays with some examples.
+94. How do you create a Numpy array with a given shape containing all zeros?
+95. How do you create a Numpy array with a given shape containing all ones?
+96. How do you create an identity matrix of a given shape?
+97. How do you create a random vector of a given length?
+98. How do you create a Numpy array with a given shape with a fixed value for each element?
+99. How do you create a Numpy array with a given shape containing randomly initialized elements?
+100. What is the difference between `np.random.rand` and `np.random.randn`? Illustrate with examples.
+101. What is the difference between `np.arange` and `np.linspace`? Illustrate with examples.
