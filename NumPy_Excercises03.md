@@ -342,15 +342,162 @@
     #        [13,  6,  8, 10]])
     ```
     
-94. Give some examples of arrays that are not compatible for broadcasting?
-95. What are the comparison operators supported by Numpy arrays? Illustrate with examples.
-96. How do you access a specific subarray or slice from a Numpy array?
-97. Illustrate array indexing and slicing in multi-dimensional Numpy arrays with some examples.
-98. How do you create a Numpy array with a given shape containing all zeros?
-99. How do you create a Numpy array with a given shape containing all ones?
-100. How do you create an identity matrix of a given shape?
-101. How do you create a random vector of a given length?
-102. How do you create a Numpy array with a given shape with a fixed value for each element?
-103. How do you create a Numpy array with a given shape containing randomly initialized elements?
-104. What is the difference between `np.random.rand` and `np.random.randn`? Illustrate with examples.
-105. What is the difference between `np.arange` and `np.linspace`? Illustrate with examples.
+48. Give some examples of arrays that are not compatible for broadcasting?
+    ```python
+    arr2 = np.array([[1, 2, 3, 4], 
+                 [5, 6, 7, 8], 
+                 [9, 1, 2, 3]])               
+    arr2.shape
+
+    arr5 = np.array([7,8])
+    arr5.shape
+    # (2,0)
+
+    arr2 + arr5
+    # ValueError: operands could not be broadcast together with shapes (3,4) (2,)
+    ```
+49. What are the comparison operators supported by Numpy arrays? Illustrate with examples.
+
+    Numpy arrays also support comparison operations like ==, !=, > and so on. The result is an array of booleans.
+    ```python
+    arr1 = np.array([[1, 2, 3], [3, 4, 5]])
+    arr2 = np.array([[2, 2, 3], [1, 2, 5]])
+
+    arr1 == arr2
+    # array([[False,  True,  True],
+    #        [False, False,  True]])
+
+    arr1 != arr2
+    # array([[ True, False, False],
+    #        [ True,  True, False]])
+
+    arr1 >= arr2
+    # array([[False,  True,  True],
+    #        [ True,  True,  True]])
+
+    arr1 < arr2
+    # array([[ True, False, False],
+    #        [False, False, False]])
+    ```
+50. How do you access a specific subarray or slice from a Numpy array?
+    Numpy extends Python's list indexing notation using [] to multiple dimensions in an intuitive fashion. You can provide a comma-separated list of indices or ranges to select a specific element or a subarray (also called a slice) from a Numpy array.
+51. Illustrate array indexing and slicing in multi-dimensional Numpy arrays with some examples.
+    ```python
+    arr3 = np.array([
+        [[11, 12, 13, 14], 
+         [13, 14, 15, 19]], 
+    
+        [[15, 16, 17, 21], 
+         [63, 92, 36, 18]], 
+    
+        [[98, 32, 81, 23],      
+         [17, 18, 19.5, 43]]])
+     
+    arr3.shape
+    # (3, 2, 4)
+
+    # Single element
+    arr3[1, 1, 2]
+
+    # 36.0
+
+    # Subarray using ranges
+    arr3[1:, 0:1, :2]
+
+    # array([[[15., 16.]],
+    # 
+    #        [[98., 32.]]])
+
+    # Mixing indices and ranges
+    arr3[1:, 1, 3]
+
+    # array([18., 43.])
+
+    arr3[1:, 1, :3]
+    # array([[63. , 92. , 36. ],
+    #        [17. , 18. , 19.5]])
+
+    # Using fewer indices
+    arr3[1]
+
+    # array([[15., 16., 17., 21.],
+    #        [63., 92., 36., 18.]])
+
+    arr3[:2, 1]
+    # array([[13., 14., 15., 19.],
+    #        [63., 92., 36., 18.]])
+    ```   
+52. How do you create a Numpy array with a given shape containing all zeros?
+    ```python
+    # All zeros
+    np.zeros((3, 2))
+
+    # array([[0., 0.],
+    #        [0., 0.],
+    #        [0., 0.]])
+    ```     
+52. How do you create a Numpy array with a given shape containing all ones?
+    ```python
+    # All ones
+    np.ones([2, 2, 3])
+
+    # array([[[1., 1., 1.],
+    #         [1., 1., 1.]],
+    #
+    #        [[1., 1., 1.],
+    #         [1., 1., 1.]]])
+    ```     
+53. How do you create an identity matrix of a given shape?
+    ```python
+    # Identity matrix
+    np.eye(3)
+
+    # array([[1., 0., 0.],
+    #        [0., 1., 0.],
+    #        [0., 0., 1.]])
+    ```     
+54. How do you create a random vector of a given length?
+    ```python
+    # Random vector
+    np.random.rand(5)
+
+    # array([0.92929562, 0.11301864, 0.64213555, 0.8600434 , 0.53738656])
+
+    # Random matrix
+    np.random.randn(2, 3) # rand vs. randn - what's the difference?
+
+    # array([[ 0.09906435, -1.64668094,  0.08073528],
+    #        [ 0.1437016 ,  0.80715712,  1.27285476]])
+    ```     
+55. How do you create a Numpy array with a given shape with a fixed value for each element?
+    ```python
+    # Fixed value
+    np.full([2, 3], 42)
+
+    # array([[42, 42, 42],
+    #        [42, 42, 42]])
+    ```     
+56. How do you create a Numpy array with a given shape containing randomly initialized elements?
+    ```python
+    # Random matrix
+    np.random.randn(2, 3) # rand vs. randn - what's the difference?
+
+    # array([[ 0.09906435, -1.64668094,  0.08073528],
+    #        [ 0.1437016 ,  0.80715712,  1.27285476]])
+    ```     
+57. What is the difference between `np.random.rand` and `np.random.randn`? Illustrate with examples.
+    - **np.random.rand** is for Uniform distribution (in the half-open interval [0.0, 1.0))
+    - **np.random.randn** is for Standard Normal (aka. Gaussian) distribution (mean 0 and variance 1)
+58. What is the difference between `np.arange` and `np.linspace`? Illustrate with examples.
+    ```python
+    # Range with start, end and step
+    np.arange(10, 90, 3)
+
+    # array([10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40, 43, 46, 49, 52, 55, 58,
+    #        61, 64, 67, 70, 73, 76, 79, 82, 85, 88])
+
+    # Equally spaced numbers in a range
+    np.linspace(3, 27, 9)
+
+    # array([ 3.,  6.,  9., 12., 15., 18., 21., 24., 27.])
+    ```     
